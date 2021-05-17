@@ -12,13 +12,20 @@ block header
 	.extra-space
 
 block content
+	button#add dodaj składnik
+	button#rem usuń ostatni składnik
 	form#new-recipe
 		label(for='name') Nazwa
 		input#name
+		span#alert-name
+		label#ingredients składniki(podaj ilość jednostkę i składnik)
+			input#ing(type='text' name='ingredients[]')
+		span#alert-ingredients
 		label(for='description') Opis
 		textarea#description
-		button Dodaj przepis
+		button#submit Dodaj przepis
 
 block scripts
 	script(src='scripts/plugins/simplemde.min.js')
 	script(src='scripts/add.js')
+
