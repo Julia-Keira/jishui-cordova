@@ -8,10 +8,15 @@ request.addEventListener('load', function (response) {
 
 	document.getElementsByTagName('h2')[0].innerText = recipe.name;
 	document.getElementsByClassName('edit')[0].href = 'edit.html?id=' + id;
-	var ingredients = recipe.ingredients.split("},{");
+	var ingredients = JSON.parse(recipe.ingredients);
 
 	for(var i=0; i < ingredients.length; i++){
-		ingredientsshow(ingredients[i]);
+		var temp = ingredients[i].quantity+" "+ingredients[i].unit+" "+ingredients[i].name;
+		var listElementTemplate = document.getElementById('ingredients-template'),
+		listElement = listElementTemplate.cloneNode(true);
+		document.getElementById("ingredients").appendChild(listElement);
+		listElement.id = "";
+		listElement.innerText = temp;
 	}
 	if (recipe.description !== "") {
 		document.getElementsByClassName('description')[0].innerHTML = markdown.toHTML(recipe.description);
@@ -22,17 +27,3 @@ request.addEventListener('load', function (response) {
 });
 request.open('GET', API + '/recipe/' + id);
 request.send();
-
-function ingredientsshow(ingredient){
-		ingredient = ingredient.replace(/[{}",:]/g, '');
-		ingredient = ingredient.replace("quantity", '');
-		ingredient = ingredient.replace("unit", ' ');
-		ingredient = ingredient.replace("name", ' ');
-		ingredient = ingredient.replace("[", '');
-		ingredient = ingredient.replace("]", '');
-	var listElementTemplate = document.getElementById('ingredients-template'),
-		listElement = listElementTemplate.cloneNode(true);
-		document.getElementById("ingredients").appendChild(listElement);
-		listElement.id = "";
-		listElement.innerText = ingredient;
-}

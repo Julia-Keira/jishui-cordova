@@ -7,10 +7,10 @@ form.addEventListener('submit', function (e) {
 	var recipeDescription = simplemde.value();
 	var recipeSklad = Array.from(document.getElementsByName('ingredients[]'));
 	var flag = true;
-	const regex = new RegExp('^[0-9]+([.,][0-9]+)*$')
-	
+	const regex = new RegExp('^[0-9]+([.,][0-9]+)*$');
 	for(var i=0; i < recipeSklad.length; i++){
 		var temp = recipeSklad[i].value.split(" ");
+		console.log(temp);
 		var nazwa = temp[2];
 //dluzsza nazwa niz 1 slowo
 		if(temp.length > 3){
@@ -77,6 +77,7 @@ document.getElementById('add').addEventListener('click', function (e) {
 	ingredients = document.getElementById('ingredients');
 	ingredients.appendChild(listElement);
 	ingredients.lastChild.id='';
+	ingredients.lastChild.name='ingredients[]';
 	ingredients.lastChild.className='input-ingredient';
 });
 
