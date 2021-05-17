@@ -4,7 +4,7 @@
 body
 	margin: 0
 	overflow-x: hidden
-	background-color: $yellow
+	background-color: pink
 	font-size: 14px
 	font-family: 'Lato-400', sans-serif
 
@@ -194,19 +194,46 @@ form
 	textarea
 		width: calc(100% - 12px)
 		background-color: $white
-		border: 1px solid darken($yellow, 10%)
+		border: 1px solid grey
 		padding: 5px
 		font-size: 14px
 		font-family: 'Lato-400', sans-serif
+	#ing
+		display: none
+
+	.input-ingredient
+		width: 30%
+		margin: 15px
+		display: block
+		border: none
+		border-bottom: 1px solid black
+	
+	.input-ingredient:focus
+		outline: none
 
 	textarea
 		height: 200px
-		resize: vertical
+		resize: none
+		
+	textarea:focus
+		outline: none
 
-	button
+	button,
 		width: 100%
 		background-color: $green
 		border: none
 		color: $white
 		padding: 10px 0
 		font-family: 'Lato-600', sans-serif
+		
+#ingredients-template
+	display: none
+		
+button,
+	width: 100%
+	margin: 5px 0
+	background-color: $green
+	border: none
+	color: $white
+	padding: 10px 0
+	font-family: 'Lato-600', sans-serif
