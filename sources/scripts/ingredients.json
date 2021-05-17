@@ -1,0 +1,36 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "Ingredients",
+	"description": "Recipe ingredients array",
+	"type": "array",
+	"items": {
+		"type": "object",
+		"properties": {
+			"quantity": {
+				"description": "Quantity of ingredient",
+				"type": [
+					"string",
+					"integer",
+					"number"
+				],
+				"pattern": "^[0-9]+([.,][0-9]+)*$"
+			},
+			"unit": {
+				"description": "Unit of ingredient",
+				"type": "string",
+				"minLength": 1
+			},
+			"name": {
+				"description": "Name of ingredient",
+				"type": "string",
+				"minLength": 1
+			}
+		},
+		"required": [
+			"quantity",
+			"unit",
+			"name"
+		],
+		"additionalProperties": false
+	}
+}
