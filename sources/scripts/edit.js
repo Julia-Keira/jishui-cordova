@@ -7,22 +7,20 @@ var request = new XMLHttpRequest();
 
 request.addEventListener('load', function (response) {
 	var recipe = JSON.parse(response.target.response);
-	console.log(recipe.ingredients);
 	var ingredients = recipe.ingredients.split("},{");
 
 	for(var i=0; i < ingredients.length; i++){
-		console.log(ingredients.length);
+		console.log(i);
 		var temp = ingredientsshow(ingredients[i]);
 		var listElementTemplate = document.getElementById('ing');
 		var listElement = listElementTemplate.cloneNode(true);
-		var ingredients = document.getElementById('ingredients');
-		ingredients.appendChild(listElement);
-		var last = ingredients.lastChild;
+		var skladniki = document.getElementById('ingredients');
+		skladniki.appendChild(listElement);
+		var last = skladniki.lastChild;
 
 		last.id='';
 		last.className='input-ingredient';
 		last.value = temp;
-		console.log(i);
 	}
 
 	document.getElementsByClassName('back')[0].href = 'details.html?id=' + id;
